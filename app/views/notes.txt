@@ -1,0 +1,6 @@
+Folder ini untuk menyimpan tiap halaman yang diperoleh dari method masing-masing controller
+
+Misalnya ada :
+Controller home -> memiliki method seperti show, get
+
+Maka  akan dibuat folder home utk menampung halaman show dan halaman get

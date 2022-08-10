@@ -1,0 +1,5 @@
+Teknik bootstrapping
+
+Di public -> index.php memanggil app/init.php
+
+init.php memanggil models/views/controller
