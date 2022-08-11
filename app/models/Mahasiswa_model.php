@@ -22,8 +22,8 @@ class Mahasiswa_model
             "jurusan" => "Teknik Elektro"
         ]
     ];
-
-    public function getAllMahasiswa(){
+    public function getAllMahasiswa()
+    {
         return $this->mhs;
     }
 }
