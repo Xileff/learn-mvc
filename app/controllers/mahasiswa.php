@@ -1,6 +1,6 @@
 <?php
 
-class Mahasiswa extends Controller
+class mahasiswa extends Controller
 {
     public function index()
     {
