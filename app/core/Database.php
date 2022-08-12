@@ -73,5 +73,12 @@ class Database
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        // stmt adalah variabel yg diperoleh dari dbh->prepare()
+        // dbh = new PDO()
+    }
+
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
     }
 }
