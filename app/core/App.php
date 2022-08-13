@@ -16,32 +16,32 @@ class App
             $url[1] = $this->method;
         }
 
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
-            // misal url = home/index/param1
-            // berarti controllernya object ini harus dijadiin index
-            $this->controller = $url[0];
-            unset($url[0]);
+        if (!file_exists('../app/controllers/' . $url[0] . '.php')) die("FILE NOT FOUND");
 
-            // controller baru diinstansiasi
-            require_once '../app/controllers/' . $this->controller . '.php';
-            $this->controller = new $this->controller;
+        // misal url = home/index/param1
+        // berarti controllernya object ini harus dijadiin index
+        $this->controller = $url[0];
+        unset($url[0]);
 
-            // Memperbarui properti method dengan method yg terdapat di URL
-            if (isset($url[1])) {
-                if (method_exists($this->controller, $url[1])) {
-                    $this->method = $url[1];
-                    unset($url[1]);
-                }
-            }
+        // controller baru diinstansiasi
+        require_once '../app/controllers/' . $this->controller . '.php';
+        $this->controller = new $this->controller;
 
-            // Cek apakah ada parameter di URL
-            if (!empty($url)) {
-                $this->params = array_values($url);
-            }
+        // Memperbarui properti method dengan method yg terdapat di URL
+        if (isset($url[1])) {
+            if (!method_exists($this->controller, $url[1])) die("METHOD DOESNT EXIST");
 
-            // Jalankan controller & method, serta kirimkan params jika ada
-            call_user_func_array([$this->controller, $this->method], $this->params);
+            $this->method = $url[1];
+            unset($url[1]);
         }
+
+        // Cek apakah ada parameter di URL
+        if (!empty($url)) {
+            $this->params = array_values($url);
+        }
+
+        // Jalankan controller & method, serta kirimkan params jika ada
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     // functions
