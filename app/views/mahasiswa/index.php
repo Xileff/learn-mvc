@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Tambah data mahasiswa</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal" id="btnTambah">Tambah data mahasiswa</button>
             <br>
             <br>
             <h3><?= $data['judul'] ?></h3>
@@ -15,7 +15,9 @@
                     <li class="list-group-item">
                         <?= $mhs['nama'] ?>
                         <a href="<?= BASEURL ?>/mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge bg-danger float-end mx-1" onclick="return confirm('Yakin?')">Hapus</a>
+                        <a href="<?= BASEURL ?>/mahasiswa/ubah/<?= $mhs['id'] ?>" class="badge bg-warning float-end mx-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id'] ?>">Ubah</a>
                         <a href="<?= BASEURL ?>/mahasiswa/detail/<?= $mhs['id'] ?>" class="badge bg-primary float-end mx-1">Detail</a>
+
                     </li>
                 <?php endforeach ?>
             </ul>
@@ -33,6 +35,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL ?>/mahasiswa/tambah" method="POST">
+                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" />
