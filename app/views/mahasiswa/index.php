@@ -4,11 +4,28 @@
             <?php Flasher::flash() ?>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row mb-3">
         <div class="col-lg-6">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal" id="btnTambah">Tambah data mahasiswa</button>
-            <br>
-            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="<?= BASEURL ?>/mahasiswa/cari" method="post">
+                <div class="input-group mb-1">
+                    <input type="text" class="form-control" placeholder="Cari mahasiswa" name="keyword" id="keyword" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit" id="tombolCari">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
             <h3><?= $data['judul'] ?></h3>
             <ul class="list-group">
                 <?php foreach ($data['mhs'] as $mhs) : ?>
@@ -17,7 +34,6 @@
                         <a href="<?= BASEURL ?>/mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge bg-danger float-end mx-1" onclick="return confirm('Yakin?')">Hapus</a>
                         <a href="<?= BASEURL ?>/mahasiswa/ubah/<?= $mhs['id'] ?>" class="badge bg-warning float-end mx-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id'] ?>">Ubah</a>
                         <a href="<?= BASEURL ?>/mahasiswa/detail/<?= $mhs['id'] ?>" class="badge bg-primary float-end mx-1">Detail</a>
-
                     </li>
                 <?php endforeach ?>
             </ul>

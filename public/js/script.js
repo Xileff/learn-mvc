@@ -4,7 +4,7 @@ $(function(){
         $('.modal-footer button[type=submit]').html('Simpan Data')
         $('.modal-footer button[type=submit]').removeClass('btn-warning')
         $('.modal-footer button[type=submit]').addClass('btn-primary')
-        $('.modal-body form').attr('action', 'http://localhost/phpmvc/public/mahasiswa/tambah')
+        $('.modal-body form').attr('action', 'http://localhost/phpmvc/mahasiswa/tambah')
 
         $('#nama').val('')
         $('#nim').val('')
@@ -17,12 +17,12 @@ $(function(){
         $('.modal-footer button[type=submit]').removeClass('btn-primary')
         $('.modal-footer button[type=submit]').addClass('btn-warning')
 
-        $('.modal-body form').attr('action', 'http://localhost/phpmvc/public/mahasiswa/ubah')
+        $('.modal-body form').attr('action', 'http://localhost/phpmvc/mahasiswa/ubah')
 
         const id = $(this).data('id')
         
         $.ajax({
-            url: 'http://localhost/phpmvc/public/mahasiswa/getubah',
+            url: 'http://localhost/phpmvc/mahasiswa/getubah',
             data: { id : id },
             method: 'post',
             dataType: 'json',
